@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Button, Modal, ModalHeader, ModalBody, Label, Col, Row} from 'reactstrap';
-import {Control, LocalForm, Errors} from 'react-redux-form';
+import {Button, Modal, ModalHeader, ModalBody, Col, Row} from 'reactstrap';
+import {Control, LocalForm} from 'react-redux-form';
 import { Purchases } from '../../redux/reducer';
 
  

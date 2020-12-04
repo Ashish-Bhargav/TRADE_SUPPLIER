@@ -39,9 +39,10 @@ export const addPurchaseOrder = (orderNumber, companyName, billingAddress,vendor
     }
 });
 
-// export const increasePurchaseQuantity = (orderNumber, quantity, price, subTotal, taxPercent, other, grandTotal) => ({
-//     type: INCREASE_PURCHASE_QUANTITY,
-//     payload: {
-//         quantity: 
-//     }
-// });
+export const addInvoiceEntry = (invoiceNumber, companyContactPerson) => ({
+    type: ADD_INVOICE_ENTRY,
+    payload: {
+        invoiceNumber: invoiceNumber,
+        companyContactPerson: companyContactPerson
+    }
+});

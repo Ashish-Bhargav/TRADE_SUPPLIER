@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Dashbaord from './components/Dashboard';
+import Dashbaord from './components/containers/Dashboard';
 import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {ConfigureStore} from './redux/store';

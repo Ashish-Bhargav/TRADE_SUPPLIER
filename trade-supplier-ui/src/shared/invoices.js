@@ -3,7 +3,7 @@ export const INVOICES = [
         id: 0,
         purchaseId: 0,
         orderNumber: '2000',
-        date: '2020-10-16T17:57:28.556094Z',
+        purchaseDate: '2020-10-16T17:57:28.556094Z',
         invoiceNumber: '4000',
         date: '2020-10-17T09:12:13.434012Z',
         companyName: 'Anstar Consultancies',
@@ -15,14 +15,16 @@ export const INVOICES = [
         specialInstructions: 'Item once purchased cannot be returned after 7 days for shipping',
         subTotal: 200,
         taxPercent: 10,
-        other: 'None',
+        other: 0,
         grandTotal: 220,
+        shippedVia: 'LedEx logistics',
+        companyContactPerson: 'Ashish'
     },
     {
         id: 1,
         purchaseId: 1,
         orderNumber: '2001',
-        date: '2020-10-16T17:57:28.556094Z',
+        purchaseDate: '2020-10-16T17:57:28.556094Z',
         invoiceNumber: '4001',
         date: '2020-12-03T09:12:13.434012Z',
         companyName: 'Coulson Chemicals',
@@ -34,7 +36,9 @@ export const INVOICES = [
         specialInstructions: 'please refer to instructions on the manual',
         subTotal: 150,
         taxPercent: 10,
-        other: 'None',
+        other: 0,
         grandTotal: 165,
+        shippedVia: 'DFL Logistics',
+        companyContactPerson: 'Bhargav'
     }
 ];

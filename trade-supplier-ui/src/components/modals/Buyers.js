@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import {Button, Modal, ModalHeader, ModalBody, Label, Col, Row} from 'reactstrap';
+import {Button, Modal, ModalHeader, ModalBody, Col, Row} from 'reactstrap';
 import {Control, LocalForm, Errors} from 'react-redux-form';
 import { Buyers } from '../../redux/reducer';
 
  const required = (val) => val && val.length > 0;
  const maxLength = (len) => (val) => !(val) || (val.length<=len);
  const minLength = (len) => (val) => (val) && (val.length>=len);
- const validEmail = (val) => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i.test(val);
+ const validEmail = (val) => /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/i.test(val);
 
 class BuyersForm extends Component{
     constructor(props){
@@ -57,7 +57,7 @@ class BuyersForm extends Component{
                                                         }}
                                                 />
                                                 <Errors className="text-danger"
-                                                        model=".name"
+                                                        model=".companyName"
                                                         show="touched"
                                                         messages={{
                                                             required: 'Required ',
@@ -77,7 +77,7 @@ class BuyersForm extends Component{
                                                         }}
                                                 />
                                                 <Errors className="text-danger"
-                                                        model=".name"
+                                                        model=".companyId"
                                                         show="touched"
                                                         messages={{
                                                             required: 'Required ',
@@ -97,11 +97,11 @@ class BuyersForm extends Component{
                                                         }}
                                                 />
                                                 <Errors className="text-danger"
-                                                        model=".name"
+                                                        model=".companyMail"
                                                         show="touched"
                                                         messages={{
                                                             required: 'Required ',
-                                                            minLength: 'must be atleast 10 characters',
+                                                            // minLength: 'must be atleast 10 characters',
                                                             validEmail: 'invalid email format'
                                                         }}
                                                 />
@@ -117,7 +117,7 @@ class BuyersForm extends Component{
                                                         }}
                                                 />
                                                 <Errors className="text-danger"
-                                                        model=".name"
+                                                        model=".companyMobile"
                                                         show="touched"
                                                         messages={{
                                                             required: 'Required ',
@@ -137,12 +137,12 @@ class BuyersForm extends Component{
                                                         }}
                                                 />
                                                 <Errors className="text-danger"
-                                                        model=".name"
+                                                        model=".companyContactPerson"
                                                         show="touched"
                                                         messages={{
                                                             required: 'Required ',
-                                                            minLength: 'must be atleast 3 characters',
-                                                            maxLength: 'must be at most 15 characters',
+                                                            minLength: ' must be atleast 3 characters',
+                                                            maxLength: ' must be at most 15 characters',
                                                         }}
                                                 />
                                             </Col>

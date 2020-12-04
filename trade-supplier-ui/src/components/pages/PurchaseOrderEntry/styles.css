@@ -1,5 +1,5 @@
 .purchase-title{
-    background-color: rgba(87, 195, 201, 0.97);
+    /* background-color: #3c8493; */
     font-weight: bolder;
     text-align: left;
     font-family: sans-serif;
@@ -21,6 +21,5 @@ h3{
 }
 
 .purchase-card{
-    background-color: rgba(87, 195, 201, 0.97);
-    height: 70vh;
+    background-color: #3c8493;
 }

@@ -1,7 +1,6 @@
-import {createStore, combineReducers, applyMiddleware} from 'redux';
+import {createStore, combineReducers} from 'redux';
 import {Buyers, Purchases, Invoices} from './reducer';
-import thunk from 'redux-thunk';
-import logger from 'redux-logger';
+
 
 export const ConfigureStore = () => {
     const store = createStore(
