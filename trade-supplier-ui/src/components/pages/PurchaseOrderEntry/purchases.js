@@ -1,0 +1,42 @@
+export const PURCHASES = [
+    {
+        id: 0,
+        orderNumber: '2000',
+        date: '2020-10-16T17:57:28.556094Z',
+        companyName: 'Anstar Consultancies',
+        billingAddress: '19-207, Trump Towers, NYC, USA-430003.',
+        vendorName: 'SlipKart Inc.',
+        vendorAddress: '34-12, Times Square, NYC, USA.',
+        shipAddress: '19-207, Trump Towers, NYC, USA-430003.',
+        shippingTerms: 'Shipping will be done within 5 business days within the US.',
+        specialInstructions: 'Item once purchased cannot be returned after 7 days for shipping.',
+        itemNumber: '3000',
+        itemDescription: 'Laptop',
+        quantity: 2,
+        price: 100,
+        subTotal: 200,
+        taxPercent: 10,
+        other: 0,
+        grandTotal: 220
+    },
+    {
+        id: 1,
+        orderNumber: '2001',
+        date: '2020-12-01T15:27:28.556094Z',
+        companyName: 'Coulson Chemicals',
+        billingAddress: '02-38, Mowlin Heights, LA, California, USA-200120',
+        vendorName: 'TapDeal Inc.',
+        vendorAddress: '12-11, Yeet Towers, LA, USA-2000001',
+        shipAddress: '02-38, Mowlin Heights, LA, California, USA-200120',
+        shippingTerms: 'Shipping will not be done outside LA',
+        specialInstructions: 'please refer to instructions on the manual',
+        itemNumber: '3001',
+        itemDescription: 'Beakers',
+        quantity: 3,
+        price: 50,
+        subTotal: 150,
+        taxPercent: 10,
+        other: 10,
+        grandTotal: 165
+    }
+];

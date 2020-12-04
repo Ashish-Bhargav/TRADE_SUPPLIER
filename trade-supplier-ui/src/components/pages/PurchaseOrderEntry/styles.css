@@ -1,0 +1,26 @@
+.purchase-title{
+    background-color: rgba(87, 195, 201, 0.97);
+    font-weight: bolder;
+    text-align: left;
+    font-family: sans-serif;
+    border-bottom: black solid 1px;
+}
+
+.purchase-details{
+    text-align: left;
+}
+
+li{
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+h3{
+    border-bottom: #0072aa solid 1px;
+    margin-bottom: 10px;
+}
+
+.purchase-card{
+    background-color: rgba(87, 195, 201, 0.97);
+    height: 70vh;
+}

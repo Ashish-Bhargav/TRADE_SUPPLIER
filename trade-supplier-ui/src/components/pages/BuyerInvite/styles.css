@@ -1,0 +1,35 @@
+.title{
+    background-color: #3c8493;
+    font-weight: bolder;
+    text-align: left;
+    font-family: sans-serif;
+    border-bottom: black solid 1px;
+}
+.buyer-details{
+    text-align: left;
+}
+
+li{
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+h3{
+    border-bottom: #0072aa solid 1px;
+    margin-bottom: 10px;
+}
+
+.buyer-card{
+    background-color: #3c8493;
+    height: 30vh;
+}
+
+.btn{
+    background-color: #008738;
+    border-radius: 0px;
+    
+}
+
+.mb-3{
+    box-shadow: 3px 7px #8888;
+}
