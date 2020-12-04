@@ -1,38 +1,53 @@
 import React from 'react';
 import InvoiceForm from '../../modals/Invoices.js';
+import './styles.css'
 import {Card, CardText, CardBody, CardTitle} from 'reactstrap';
 import { addInvoiceEntry } from '../../../redux/action.js';
 
-function RenderPurchase({purchase, addInvoiceEntry}){
+function RenderInvoice({purchase, addInvoiceEntry, invoice, purchaseId}){
     const subTotal = (purchase.price*purchase.quantity);
     const total = (parseInt(purchase.other)+subTotal);
     const grandTotal = (total + (subTotal*purchase.taxPercent)/100);
-    return(
-        <Card className='purchase-card mb-3'>
+    const item = invoice.map((invoice)=>{
+        return(
+            <Card className='invoice-card mb-3'>
                 <CardBody>
-                        <CardTitle className='purchase-title' heading><h4>{purchase.companyName}</h4></CardTitle>
+                        <CardTitle className='invoice-title' heading><h3>{invoice.companyName}</h3></CardTitle>
                         <CardText>
-                            <ul className='purchase-details list-unstyled'>
-                                <li>Order Number: {purchase.orderNumber}</li>
+                            <ul className='invoice-details list-unstyled'>
+                                <li>Invoice Number: {invoice.invoiceNumber}</li>
+                                <li>Order Number: {invoice.orderNumber}</li>
+                                <li>Order Date: {purchase.date}</li>
                                 <li>Date: { new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(purchase.date))) }</li>
-                                <li>Billing Address: {purchase.billingAddress}</li>
-                                <li>Vendor Name: {purchase.vendorName}</li>
-                                <li>Vendor Address: {purchase.vendorAddress}</li>
-                                <li>Shipping Address: {purchase.shipAddress}</li>
-                                <li>Shipping Terms: {purchase.shippingTerms}</li>
-                                <li>Special Instructions: {purchase.specialInstructions}</li>
-                                <li>Item #: {purchase.itemNumber}</li>
-                                <li>Item Description: {purchase.itemDescription}</li>
-                                <li>Quantity: {purchase.quantity}</li>
-                                <li>Price Per Unit: {purchase.price}</li>
+                                <li>Billing Address: {invoice.billingAddress}</li>
+                                <li>Vendor Name: {invoice.vendorName}</li>
+                                <li>Vendor Address: {invoice.vendorAddress}</li>
+                                <li>Shipping Address: {invoice.shipAddress}</li>
+                                <li>Shipping Terms: {invoice.shippingTerms}</li>
+                                <li>Special Instructions: {invoice.specialInstructions}</li>
                                 <li>Sub Total: {subTotal}</li>
-                                <li>Tax Percent: {purchase.taxPercent}</li>
-                                <li>Other: {purchase.other}</li>
+                                <li>Tax Percent: {invoice.taxPercent}</li>
+                                <li>Other: {invoice.other}</li>
                                 <li>grandTotal: {grandTotal}</li>
                             </ul>
                         </CardText>
                 </CardBody>
             </Card>
+        );
+    });
+    return(
+        <div className='container'>
+            <div className='row'>
+                <h2>Invoice</h2>
+            </div>
+            <div className='row'>
+                    {item}
+                    <InvoiceForm addInvoiceEntry={addInvoiceEntry}
+                        purchase = {purchase}
+                        purchaseId = {purchaseId}
+                    />
+            </div>
+        </div>
     );
 }
 
@@ -43,13 +58,13 @@ const InvoiceEntry = (props) => {
             <div className='container'>
                 <div className='row'>
                     <div className='col-12 col-md-5 m-1'>
-                        <RenderPurchase purchase={props.purchase}
+                        <RenderInvoice purchase={props.purchase}
                                         addInvoiceEntry={props.addInvoiceEntry}
+                                        invoice={props.invoice}
+                                        purchaseId={props.purchase.id}
                         />
                     </div>
-                    <div className='col-12 col-md-5 m-1'>
-                        <InvoiceForm addInvoiceEntry={props.addInvoiceEntry}/>
-                    </div>
+                    
                 </div>
             </div>
         )

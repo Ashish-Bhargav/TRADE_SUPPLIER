@@ -13,8 +13,6 @@ class Header extends Component{
         }
         this.toggleNav=this.toggleNav.bind(this);
         this.toggleModal=this.toggleModal.bind(this);
-        this.handleLogin=this.handleLogin.bind(this);
-
     }
     toggleNav(){
         this.setState({
@@ -26,14 +24,7 @@ class Header extends Component{
             isModalOpen: !this.state.isModalOpen
         });
     }
-    handleLogin(event){
-        this.toggleModal();
-        alert('username: ' + this.username.value + " password: " + this.password.value +
-            ' remember: ' + this.remember.checked
-        );
-        event.preventDefault();
-        
-    }
+    
     render(){
         return(
             <React.Fragment>
@@ -52,11 +43,7 @@ class Header extends Component{
                                         <span className="fa fa-info fa-sm"></span>Purchases
                                     </NavLink>
                                 </NavItem>
-                                <NavItem>
-                                    <NavLink className="nav-link" to="/invoiceEntry">
-                                        <span className="fa fa-list fa-sm"></span>Invoices
-                                    </NavLink>
-                                </NavItem>
+                                
                                 {/* <NavItem>
                                     <NavLink className="nav-link" to="/contactus">
                                         <span className="fa fa-address-card fa-sm"></span>Contact Us

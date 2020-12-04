@@ -39,10 +39,25 @@ export const addPurchaseOrder = (orderNumber, companyName, billingAddress,vendor
     }
 });
 
-export const addInvoiceEntry = (invoiceNumber, companyContactPerson) => ({
+export const addInvoiceEntry = (purchaseId, purchaseDate, orderNumber, companyName, billingAddress, vendorName, vendorAddress, shipAddress, shippingTerms, specialInstructions, invoiceNumber, companyContactPerson, subTotal, taxPercent, other, grandTotal, shippedVia) => ({
     type: ADD_INVOICE_ENTRY,
     payload: {
+        purchaseId: purchaseId,
+        orderNumber: orderNumber,
+        purchaseDate: purchaseDate,
+        companyName: companyName,
+        billingAddress: billingAddress,
+        vendorName: vendorName,
+        vendorAddress: vendorAddress,
+        shipAddress: shipAddress, 
+        shippingTerms: shippingTerms,
+        specialInstructions: specialInstructions,
         invoiceNumber: invoiceNumber,
-        companyContactPerson: companyContactPerson
+        companyContactPerson: companyContactPerson,
+        subTotal: subTotal,
+        taxPercent: taxPercent,
+        other: other,
+        grandTotal: grandTotal,
+        shippedVia: shippedVia
     }
 });

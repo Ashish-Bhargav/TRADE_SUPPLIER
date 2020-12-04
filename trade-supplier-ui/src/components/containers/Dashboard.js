@@ -12,26 +12,30 @@ const mapStateToProps = state => {
         buyers: state.buyers,
         purchases: state.purchases,
         invoices: state.invoices
+        
     });
+    
 };
 
 const mapDispatchToProps = (dispatch) => ({
     inviteNewBuyer: (companyName, companyId, companyMail, companyMobile, companyContactPerson) => dispatch(inviteNewBuyer(companyName, companyId, companyMail, companyMobile, companyContactPerson)),
     addPurchaseOrder: (orderNumber, companyName, billingAddress,vendorName, vendorAddress, shipAddress, shippingTerms, specialInstructions, itemNumber, itemDescription, quantity, price, subTotal, taxPercent, other, grandTotal) => dispatch(addPurchaseOrder(orderNumber, companyName, billingAddress,vendorName, vendorAddress, shipAddress, shippingTerms, specialInstructions, itemNumber, itemDescription, quantity, price, subTotal, taxPercent, other, grandTotal)),
-    addInvoiceEntry: (invoiceNumber, companyContactPerson, orderNumber, companyName, billingAddress,vendorName, vendorAddress, shipAddress, shippingTerms, specialInstructions, itemNumber, itemDescription, quantity, price, subTotal, taxPercent, other, grandTotal)=>dispatch(addInvoiceEntry(invoiceNumber, companyContactPerson, orderNumber, companyName, billingAddress,vendorName, vendorAddress, shipAddress, shippingTerms, specialInstructions, itemNumber, itemDescription, quantity, price, subTotal, taxPercent, other, grandTotal))
+    addInvoiceEntry: (purchaseDate, purchaseId, invoiceNumber, companyContactPerson, orderNumber, companyName, billingAddress,vendorName, vendorAddress, shipAddress, shippingTerms, specialInstructions, subTotal, taxPercent, other, grandTotal)=>dispatch(addInvoiceEntry(purchaseDate, purchaseId, invoiceNumber, companyContactPerson, orderNumber, companyName, billingAddress,vendorName, vendorAddress, shipAddress, shippingTerms, specialInstructions, subTotal, taxPercent, other, grandTotal))
 })
 
 
 
 class Dashboard extends Component {
+  
 
     render() {
+        console.log(this.props.invoices);
         const InvoiceWithId = ({match}) => {
             return (
                 <InvoiceEntry 
                     purchase={this.props.purchases.filter((purchase)=>purchase.id===parseInt(match.params.purchaseId,10))[0]}
                     addInvoiceEntry = {this.props.addInvoiceEntry}
-                    invoices={this.props.invoices}
+                    invoice = {this.props.invoices.filter((invoice)=>invoice.id===parseInt(match.params.purchaseId,10))}
                 />
             );
         };

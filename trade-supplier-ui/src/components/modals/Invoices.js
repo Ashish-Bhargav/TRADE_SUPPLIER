@@ -24,7 +24,8 @@ export default class InvoiceForm extends Component {
 
     handleSubmit(values){
         this.toggleModal();
-        this.props.addInvoiceEntry(values.invoiceNumber, values.companyContactPerson, values.orderNumber, values.companyName, values.billingAddress, values.vendorName, values.vendorAddress, values.shipAddress, values.shippingTerms, values.specialInstructions, values.itemNumber, values.itemDescription, values.quantity, values.price, values.subTotal, values.taxPercent, values.other, values.grandTotal);
+        this.props.addInvoiceEntry(this.props.purchase.date, this.props.purchaseId,values.invoiceNumber, values.companyContactPerson, values.orderNumber, values.companyName, values.billingAddress, values.vendorName, values.vendorAddress, values.shipAddress, values.shippingTerms, values.specialInstructions, values.subTotal, values.taxPercent, values.other, values.grandTotal);
+        console.log(this.props.purchaseId);
         
     }
 
@@ -52,7 +53,7 @@ export default class InvoiceForm extends Component {
                                         <Row className="form-group">
                                             <Col md={12}>
                                                 <Control.text model=".companyContactPerson" id="companyContactPerson" name="companyContactPerson"
-                                                        placeholder="Invoice Number"
+                                                        placeholder="Company Contact Person"
                                                         className="form-control"
                                                 />
                                             </Col>
@@ -60,15 +61,17 @@ export default class InvoiceForm extends Component {
                                         <Row className="form-group">
                                             <Col md={12}>
                                                 <Control.text model=".orderNumber" id="orderNumber" name="orderNumber"
-                                                        placeholder="Order Number"
+                                                        defaultValue={this.props.purchase.orderNumber}
                                                         className="form-control"
+                                                        readOnly
                                                 />
                                             </Col>
                                         </Row>
                                         <Row className="form-group">
                                             <Col md={12}>
                                                 <Control.text model=".companyName" id="companyName" name="companyName"
-                                                        placeholder="Company Name"
+                                                        defaultValue={this.props.purchase.companyName}
+                                                        readOnly
                                                         className="form-control"
                                                         
                                                 />
@@ -77,7 +80,8 @@ export default class InvoiceForm extends Component {
                                         <Row className="form-group">
                                             <Col md={12}>
                                                 <Control.text model=".billingAddress" id="billingAddress" name="billingAddress"
-                                                        placeholder="Billing Address"
+                                                       defaultValue={this.props.purchase.billingAddress}
+                                                       readOnly
                                                         className="form-control"
                                                       
                                                 />
@@ -87,9 +91,9 @@ export default class InvoiceForm extends Component {
                                         <Row className="form-group">
                                             <Col md={12}>
                                                 <Control.text model=".vendorName" id="vendorName" name="vendorName"
-                                                        placeholder="Vendor Name"
+                                                        defaultValue={this.props.purchase.vendorName}
+                                                        readOnly
                                                         className="form-control"
-                                                        
                                                 />
                                                 
                                             </Col>
@@ -97,7 +101,8 @@ export default class InvoiceForm extends Component {
                                         <Row className="form-group">
                                             <Col md={12}>
                                                 <Control.text model=".vendorAddress" id="vendorAddress" name="vendorAddress"
-                                                        placeholder="Vendor Address"
+                                                        defaultValue={this.props.purchase.vendorAddress}
+                                                        readOnly
                                                         className="form-control"
                                                         
                                                 />
@@ -107,7 +112,8 @@ export default class InvoiceForm extends Component {
                                         <Row className="form-group">
                                             <Col md={12}>
                                                 <Control.text model=".shipAddress" id="shipAddress" name="shipAddress"
-                                                        placeholder="Shipping Address"
+                                                        defaultValue={this.props.purchase.shipAddress}
+                                                        readOnly
                                                         className="form-control"
                                                         
                                                 />
@@ -117,7 +123,8 @@ export default class InvoiceForm extends Component {
                                         <Row className="form-group">
                                             <Col md={12}>
                                                 <Control.textarea model=".shippingTerms" id="shippingTerms" name="shippingTerms"
-                                                        placeholder="Shipping Terms"
+                                                        defaultValue={this.props.purchase.shippingTerms}
+                                                        readOnly
                                                         className="form-control"
                                                         
                                                 />
@@ -127,7 +134,8 @@ export default class InvoiceForm extends Component {
                                         <Row className="form-group">
                                             <Col md={12}>
                                                 <Control.textarea model=".specialInstructions" id="specialInstructions" name="specialInstructions"
-                                                        placeholder="Special Instructions"
+                                                        defaultValue={this.props.purchase.specialInstructions}
+                                                        readOnly
                                                         className="form-control"
                                                         
                                                 />
@@ -135,51 +143,35 @@ export default class InvoiceForm extends Component {
                                             </Col>
                                         </Row>
                                         <Row className="form-group">
-                                            <Col md={12}>
-                                                <Control.text model=".itemNumber" id="itemNumber" name="itemNumber"
-                                                        placeholder="Item #"
-                                                        className="form-control"
-                                                />
-                                                
-                                            </Col>
-                                        </Row>
-                                        <Row className="form-group">
-                                            <Col md={12}>
-                                                <Control.textarea model=".itemDescription" id="itemDescription" name="itemDescription"
-                                                        placeholder="Item Description"
-                                                        className="form-control"
-                                                />
-                                                
-                                            </Col>
-                                        </Row>
-                                        <Row className="form-group">
-                                            <Col md={3}>
-                                                <Control.text type='number' model=".price" id="price" name="price"
-                                                        placeholder="Unit Price"
-                                                        className="form-control"
-                                                />
-                                                
-                                            </Col>
-                                            <Col md={3}>
-                                                <Control.text type='number' model='.quantity' id='quantity' name='quantity'
-                                                        placeholder='Quantity' className='form-control'
-                                                />
-                                            </Col>
                                             <Col md={3}>
                                                 <Control.text type='number' model='.taxPercent' id='taxPercent' name='taxPercent'
-                                                        placeholder='Tax Percent' className='form-control'
+                                                        defaultValue={this.props.purchase.taxPercent}
+                                                        readOnly
+                                                        className='form-control'
                                                 />
                                             </Col>
                                             <Col md={3}>
                                                 <Control.text type='number' model='.other' id='other' name='other'
-                                                        placeholder='other' className='form-control'
+                                                        defaultValue={this.props.purchase.other}
+                                                        readOnly 
+                                                        className='form-control'
                                                 />
+                                            </Col>
+                                        </Row>
+                                        <Row className="form-group">
+                                            <Col md={12}>
+                                                <Control.text model=".shippedVia" id="shippedVia" name="shippedVia"
+                                                        placeholder='Shipped Via'
+                                                        className="form-control"
+                                                        
+                                                />
+                                                
                                             </Col>
                                         </Row>
                                         
                                         <Row className="form-group">
                                             <Col md={12}>
-                                                <Button className="btn-block" color="success"  type="submit">Add Order</Button>
+                                                <Button className="btn-block" color="success"  type="submit">Submit</Button>
                                             </Col>
                                         </Row>
                                     </LocalForm>
