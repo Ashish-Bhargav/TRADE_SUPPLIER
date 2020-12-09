@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Modal, ModalHeader, ModalBody, Col, Row} from 'reactstrap';
 import {Control, LocalForm} from 'react-redux-form';
-import { Purchases } from '../../redux/reducer';
 
  
 
@@ -25,7 +24,7 @@ class PurchaseForm extends Component{
 
     handleSubmit(values){
         this.toggleModal();
-        this.props.addPurchaseOrder(values.orderNumber, values.companyName, values.billingAddress, values.vendorName, values.vendorAddress, values.shipAddress, values.shippingTerms, values.specialInstructions, values.itemNumber, values.itemDescription, values.quantity, values.price, values.subTotal, values.taxPercent, values.other, values.grandTotal);
+        this.props.addPurchaseOrder(this.props.buyerId, values.orderNumber, values.companyName, values.billingAddress, values.vendorName, values.vendorAddress, values.shipAddress, values.shippingTerms, values.specialInstructions, values.itemNumber, values.itemDescription, values.quantity, values.price, values.subTotal, values.taxPercent, values.other, values.grandTotal);
         
     }
 

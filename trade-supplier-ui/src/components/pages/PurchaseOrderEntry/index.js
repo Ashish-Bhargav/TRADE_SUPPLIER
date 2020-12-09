@@ -2,57 +2,64 @@ import React, { Component } from 'react'
 import PurchaseForm from '../../modals/Purchases.js';
 import './styles.css';
 import {Card, CardText, CardBody, CardTitle} from 'reactstrap';
-import { addPurchaseOrder } from '../../../redux/action.js';
 import { Link } from 'react-router-dom';
 
-function RenderPurchaseOrders({purchase, addPurchaseOrder}){
-    const subTotal = (purchase.price*purchase.quantity);
-    const total = (parseInt(purchase.other)+subTotal);
-    const grandTotal = (total + (subTotal*purchase.taxPercent)/100);
+function RenderPurchaseOrders({buyer, purchases, buyerId, addPurchaseOrder}){
+    
+    const purchase = purchases.map((pur, index)=>{
+        const subTotal = (pur.price*pur.quantity);
+        const total = (parseInt(pur.other)+subTotal);
+        const grandTotal = (total + (subTotal*pur.taxPercent)/100);
+        return(
+            <div key={index}>
+                <Card className='purchase-card mb-3'>
+                    <Link to={`/invoices/${pur.id}`} style={{textDecoration: 'none', color: "black"}}>
+                        <CardBody>
+                                <CardTitle className='purchase-title' heading><h4>Order Number: {pur.orderNumber}</h4></CardTitle>
+                                <CardText>
+                                    <ul className='purchase-details list-unstyled'>
+                                        <li>Order Number: {pur.orderNumber}</li>
+                                        <li>Date: { new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(pur.date))) }</li>
+                                        <li>Billing Address: {pur.billingAddress}</li>
+                                        <li>Vendor Name: {pur.vendorName}</li>
+                                        <li>Vendor Address: {pur.vendorAddress}</li>
+                                        <li>Shipping Address: {pur.shipAddress}</li>
+                                        <li>Shipping Terms: {pur.shippingTerms}</li>
+                                        <li>Special Instructions: {pur.specialInstructions}</li>
+                                        <li>Item #: {pur.itemNumber}</li>
+                                        <li>Item Description: {pur.itemDescription}</li>
+                                        <li>Quantity: {pur.quantity}</li>
+                                        <li>Price Per Unit: {pur.price}</li>
+                                        <li>Sub Total: {subTotal}</li>
+                                        <li>Tax Percent: {pur.taxPercent}</li>
+                                        <li>Other: {pur.other}</li>
+                                        <li>grandTotal: {grandTotal}</li>
+                                    </ul>
+                                    
+                                </CardText>
+                        </CardBody>
+                    </Link>
+                </Card>
+            </div>
+        );
+    });
     return(
-            <Card className='purchase-card mb-3'>
-                <Link to={`/purchaseOrderEntry/${purchase.id}`} style={{textDecoration: 'none', color: "black"}}>
-                    <CardBody>
-                            <CardTitle className='purchase-title' heading><h4>{purchase.companyName}</h4></CardTitle>
-                            <CardText>
-                                <ul className='purchase-details list-unstyled'>
-                                    <li>Order Number: {purchase.orderNumber}</li>
-                                    <li>Date: { new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(purchase.date))) }</li>
-                                    <li>Billing Address: {purchase.billingAddress}</li>
-                                    <li>Vendor Name: {purchase.vendorName}</li>
-                                    <li>Vendor Address: {purchase.vendorAddress}</li>
-                                    <li>Shipping Address: {purchase.shipAddress}</li>
-                                    <li>Shipping Terms: {purchase.shippingTerms}</li>
-                                    <li>Special Instructions: {purchase.specialInstructions}</li>
-                                    <li>Item #: {purchase.itemNumber}</li>
-                                    <li>Item Description: {purchase.itemDescription}</li>
-                                    <li>Quantity: {purchase.quantity}</li>
-                                    <li>Price Per Unit: {purchase.price}</li>
-                                    <li>Sub Total: {subTotal}</li>
-                                    <li>Tax Percent: {purchase.taxPercent}</li>
-                                    <li>Other: {purchase.other}</li>
-                                    <li>grandTotal: {grandTotal}</li>
-                                </ul>
-                                
-                            </CardText>
-                    </CardBody>
-                </Link>
-            </Card>
+        <div>
+            <h3>
+                {buyer.companyName}
+            </h3>
+            {purchase}
+            <PurchaseForm addPurchaseOrder={addPurchaseOrder} buyerId={buyerId}/>
+        </div>
     );
+    
 }
 
 class PurchaseOrderEntry extends Component {
     
     render() {
-        const purchase = this.props.purchases.map((purchase)=>{
-            return(
-                <div key = {purchase.id} className='col-12 col-md-6'>
-                    <RenderPurchaseOrders purchase = {purchase}
-                        addPurchaseOrder={this.props.addPurchaseOrder}
-                    />
-                </div>
-            );
-        })
+        console.log(this.props.purchases);
+        
         return (
             <div className='container mt-5 text-left'>
                 <div className='row'>
@@ -60,12 +67,14 @@ class PurchaseOrderEntry extends Component {
                         <h3>Purchases</h3>
                     </div>
                 </div>
-                <div className='row mt-3'>
-                    {purchase}
-                </div>
+                
                 <div className='row mt-5'>
                     <div className='col-12 col-md-5'>
-                        <PurchaseForm addPurchaseOrder={this.props.addPurchaseOrder}/>
+                        <RenderPurchaseOrders purchases = {this.props.purchases}
+                            addPurchaseOrder={this.props.addPurchaseOrder}
+                            buyer = {this.props.buyer}
+                            buyerId = {this.props.buyer.id}
+                        />
                     </div>
                 </div>
             </div>

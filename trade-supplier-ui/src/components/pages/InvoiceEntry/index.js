@@ -2,7 +2,7 @@ import React from 'react';
 import InvoiceForm from '../../modals/Invoices.js';
 import './styles.css'
 import {Card, CardText, CardBody, CardTitle} from 'reactstrap';
-import { addInvoiceEntry } from '../../../redux/action.js';
+// import { addInvoiceEntry } from '../../../redux/action.js';
 
 function RenderInvoice({purchase, addInvoiceEntry, invoice, purchaseId}){
     const subTotal = (purchase.price*purchase.quantity);

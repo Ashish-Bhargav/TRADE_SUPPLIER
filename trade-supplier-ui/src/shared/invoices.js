@@ -1,7 +1,7 @@
 export const INVOICES = [
     {
         id: 0,
-        purchaseId: 6,
+        purchaseId: 0,
         orderNumber: '2000',
         purchaseDate: '2020-10-16T17:57:28.556094Z',
         invoiceNumber: '4000',
@@ -22,7 +22,7 @@ export const INVOICES = [
     },
     {
         id: 1,
-        purchaseId: 6,
+        purchaseId: 0,
         orderNumber: '2001',
         purchaseDate: '2020-10-16T17:57:28.556094Z',
         invoiceNumber: '4001',

@@ -1,10 +1,7 @@
 export const INVITE_NEW_BUYER = 'INVITE_NEW_BUYER';
 export const ADD_PURCHASE_ORDER = 'ADD_PURCHASE_ORDER';
 export const ADD_INVOICE_ENTRY = 'ADD_INVOICE_ENTRY';
-export const BUYERS_LOADING = 'BUYERS_LOADING';
-export const ORDERS_LOADING = 'ORDERS_LOADING';
-export const INVOICES_LOADING = 'INVOICES_LOADING';
-export const INCREASE_PURCHASE_QUANTITY = 'INCREASE_QUANTITY';
+export const EDIT_BUYER = 'EDIT_BUYER';
 
 export const inviteNewBuyer = (companyName, companyId, companyMail, companyMobile, companyContactPerson) => ({
     type: INVITE_NEW_BUYER,
@@ -17,9 +14,17 @@ export const inviteNewBuyer = (companyName, companyId, companyMail, companyMobil
     }
 });
 
-export const addPurchaseOrder = (orderNumber, companyName, billingAddress,vendorName, vendorAddress, shipAddress, shippingTerms, specialInstructions, itemNumber, itemDescription, quantity, price, subTotal, taxPercent, other, grandTotal)=>({
+export const editBuyer = () => ({
+    type: EDIT_BUYER,
+    payload: {
+        
+    }
+});
+
+export const addPurchaseOrder = (buyerId, orderNumber, companyName, billingAddress,vendorName, vendorAddress, shipAddress, shippingTerms, specialInstructions, itemNumber, itemDescription, quantity, price, subTotal, taxPercent, other, grandTotal)=>({
     type: ADD_PURCHASE_ORDER,
     payload: {
+        buyerId: buyerId,
         orderNumber: orderNumber,
         companyName: companyName,
         billingAddress: billingAddress,

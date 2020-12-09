@@ -1,6 +1,7 @@
 export const PURCHASES = [
     {
         id: 0,
+        buyerId: 0,
         orderNumber: '2000',
         date: '2020-10-16T17:57:28.556094Z',
         companyName: 'Anstar Consultancies',
@@ -21,6 +22,7 @@ export const PURCHASES = [
     },
     {
         id: 1,
+        buyerId: 1,
         orderNumber: '2001',
         date: '2020-12-01T15:27:28.556094Z',
         companyName: 'Coulson Chemicals',

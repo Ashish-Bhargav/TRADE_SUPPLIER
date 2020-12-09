@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Modal, ModalHeader, ModalBody, Col, Row} from 'reactstrap';
 import {Control, LocalForm, Errors} from 'react-redux-form';
-import { Buyers } from '../../redux/reducer';
 
  const required = (val) => val && val.length > 0;
  const maxLength = (len) => (val) => !(val) || (val.length<=len);

@@ -24,7 +24,7 @@ export default class InvoiceForm extends Component {
 
     handleSubmit(values){
         this.toggleModal();
-        this.props.addInvoiceEntry(this.props.purchase.date, this.props.purchaseId,values.invoiceNumber, values.companyContactPerson, values.orderNumber, values.companyName, values.billingAddress, values.vendorName, values.vendorAddress, values.shipAddress, values.shippingTerms, values.specialInstructions, values.subTotal, values.taxPercent, values.other, values.grandTotal);
+        this.props.addInvoiceEntry(this.props.purchase.date, this.props.purchaseId, values.invoiceNumber, values.companyContactPerson, values.orderNumber, values.companyName, values.billingAddress, values.vendorName, values.vendorAddress, values.shipAddress, values.shippingTerms, values.specialInstructions, values.subTotal, values.taxPercent, values.other, values.grandTotal);
         console.log(this.props.purchaseId);
         
     }
